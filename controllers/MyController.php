@@ -7,15 +7,14 @@
  */
 
 namespace app\controllers;
-use yii\web\Controller;
+//use yii\web\Controller;
 
-class MyController extends Controller
+class MyController extends ApplicationController
 {
-    public function actionIndex($id = "No ID<span style='font-size:14px'>ea</span>)")
+    public function actionIndex()
     {
-        return $this -> render ('index',[
-            'id' => $id
-        ]);
+        $numbers = [1, 2, 3, 5, 12345];
+        return $this->render('index', compact('numbers'));
     }
 
 }

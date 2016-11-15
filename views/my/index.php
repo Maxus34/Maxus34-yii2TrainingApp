@@ -3,4 +3,8 @@
 ?>
 
 <h1>My Controller -> Index</h1> <br>
-<h2>Id = <?=$id?></h2>
+
+<?php
+foreach ($numbers as $number) {
+    echo $number . "<br>";
+}
