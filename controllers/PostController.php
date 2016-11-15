@@ -11,11 +11,14 @@ use Yii;
 
 class PostController extends AppController
 {
-    public function actionTest () {
-        $names = ['Iv', 'Pe', 'Si'];
+    // Установка шаблона "basic";
+    public $layout = 'basic';
 
-        //$this->debug(Yii::$app);
-
+    public function actionIndex () {
         return $this->render('test');
+    }
+
+    public function actionShow () {
+        return $this->render('show');
     }
 }
