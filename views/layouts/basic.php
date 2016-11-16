@@ -18,17 +18,22 @@ AppAsset::register($this);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
-    <h1>Hello, Basic Template!</h1>
 
-    <div>
-        <?= $content ?>
-    </div>
-
+     <div class="wrap" >
+         <div class="container">
+             <ul class="nav nav-pills">
+                 <li role="presentation" class="active"><?= Html::a('Главная',['site/index'])?></li>
+                 <li role="presentation">               <?= Html::a('Статьи', ['post/index'])?></li>
+                 <li role="presentation">               <?= Html::a('Статья', ['post/show'])?></li>
+             </ul>
+             <?= $content ?>
+         </div>
+     </div>
 
 <?php $this->endBody() ?>
 </body>
