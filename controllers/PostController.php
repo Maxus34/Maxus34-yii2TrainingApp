@@ -31,6 +31,7 @@ class PostController extends AppController
     }
 
     public function actionShow () {
+        $this->view->title="Post=>Show";
         return $this->render('show');
     }
 }

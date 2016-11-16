@@ -1,5 +1,5 @@
 <?php
-    $this->title="Post=>Show";
+//$this = view;
     $jsCode =
 <<< JS
         $('#btn_1').on('click', function () {
@@ -16,9 +16,39 @@
             });
         });
 JS;
-     
     $this->registerJs($jsCode, yii\web\View :: POS_READY);
 ?>
 
+<?php $this->beginBlock('block1'); ?>
+    <h1> Заголовок страницы </h1>
+<?php $this->endBlock(); ?>
+
 <h1>Show Action</h1>
 <button class="btn btn-success" id="btn_1">Click me</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
