@@ -6,7 +6,23 @@
 
 <h1>Test Action</h1>
 
-<?php $form = ActiveForm::begin(['options' => ['id' => 'testForm', 'target' => '/post/index/']]) ?>
+<?php if(Yii::$app->session->hasFlash('success')): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Success!</strong>
+        <?=Yii::$app->session->getFlash('success')?>
+        </div>
+<?php endif;?>
+
+<?php if(Yii::$app->session->hasFlash('error')):?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong>
+        <?= Yii::$app->session->getFlash('error') ?>
+    </div>
+<?php endif;?>
+
+<?php $form = ActiveForm::begin(['options' => ['id' => 'testForm', 'action' => '/post/index/']]) ?>
 <?=   $form->field( $model, 'name' )->label('Имя') ?>
 <?=   $form->field( $model, 'email' )->input('email')?>
 <?=   $form->field( $model, 'text' )->label('Текст сообщения')->textarea(['rows' => '5']) ?>

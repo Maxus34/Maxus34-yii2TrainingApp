@@ -26,20 +26,22 @@ class TestForm extends Model {
 
     public function rules()
     {   //Варидаторы
+        //Поле без валидатора по умолчанию является не безопасным
+        // и не будет загружено в модель.
         return [
             [ ['name', 'email'], 'required'],
             ['email', 'email'],
-            //['name', 'string', 'min' => 2, 'tooShort' => 'Too short input'],
-            //['name', 'string', 'max' => 5, 'tooLong' => 'Too long input'],
-            ['name', 'string', 'length' => [2,5], 'tooShort' => 'Short input', 'tooLong' => 'Long input'],
-
-            ['name', 'myRule']
+//            ['name', 'string', 'min' => 2, 'tooShort' => 'Too short input'],
+//            ['name', 'string', 'max' => 5, 'tooLong' => 'Too long input'], // То же что и ↓
+            ['name', 'string', 'length' => [2,15], 'tooShort' => 'Short input', 'tooLong' => 'Long input'],
+            ['text', 'safe'], // "Safe" делает поле безопасным.
+            //['name', 'myRule']
         ];
     }
 
-    public function myRule($attr) {
-        if (!in_array($this->$attrs, ['Hello' , 'World'])) {
-            $this->addError($attrs, 'Wrong');
+    public function myRule($attr) { // Специальная функция валидации
+        if (!in_array($this->$attr, ['Hello ' , 'World'])) {
+            $this->addError($attr, 'Wrong input: '. $this->$attr);
         }
     }
 }
