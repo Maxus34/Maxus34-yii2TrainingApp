@@ -7,8 +7,11 @@
  */
 
 namespace app\controllers;
+
 use Yii;
 use app\models\TestForm;
+use app\models\Category;
+
 
 class PostController extends AppController
 {
@@ -44,6 +47,10 @@ class PostController extends AppController
 
     public function actionShow () {
         $this->view->title="Post=>Show";
-        return $this->render('show');
+
+        //Получаем информацию из модели
+        $cats = Category::find()->all(); //SELECT * FROM ...
+
+        return $this->render('show', compact('cats'));
     }
 }
