@@ -28,6 +28,10 @@ class PostController extends AppController
             debug(Yii :: $app -> request -> post());
             return "Test";
         }
+        if ( Yii :: $app -> request -> isPost ) {
+            debug(Yii :: $app -> request -> post());
+            return "Test";
+        }
 
         $model = new TestForm();
 
