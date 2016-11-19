@@ -47,7 +47,7 @@ class PostController extends AppController
 
     public function actionShow () {
         $this->view->title="Post=>Show";
-
+        /*
         //Получаем информацию из модели
         // -> find() - обязательный, строит обьект запроса
         // -> all() - получить все
@@ -66,6 +66,10 @@ class PostController extends AppController
         $cats = Category::findBySql($query, [':search'=> '%T%'])->all();
         //findOne(условие) получить одну запись из бд
         //findAll(условие) получить все записи из бд
+        */
+        //Жадная загрузка
+        //->with('products') позволяет получить сразу продукты вместе с категориями.
+        $cats = Category::find()->with('products')->all();
 
         return $this->render('show', compact('cats'));
     }
