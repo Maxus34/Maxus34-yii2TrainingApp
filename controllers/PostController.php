@@ -49,7 +49,23 @@ class PostController extends AppController
         $this->view->title="Post=>Show";
 
         //Получаем информацию из модели
-        $cats = Category::find()->all(); //SELECT * FROM ...
+        // -> find() - обязательный, строит обьект запроса
+        // -> all() - получить все
+        // -> one() - получить одну первую | Запрос избыточный, сначала получит все записи, но вернет всего одну
+        // -> count() - подсчитывает количество записей
+        // -> orderBy(['id' => SORT_ASC]) SORT_ASC || SORT_DESC
+        // -> asArray(['value' => true]) - позволяет получить данные в виде массива. Такой подход усколяет работу и уменьшает потребление RAM
+        // -> where('parent = > < 123') || where(['< > =', 'parent', '123'])
+        // -> where(['like', 'title', 'te']) - выбирает такие "title", где встречается "te".
+        // -> limit(number) - ограничивает количество записей до number
+
+        //$cats = Category::find()->asArray(['value' => true])->limit(12)->all();
+
+        //$query = "SELECT * FROM categories WHERE title LIKE '%T%'";
+        $query = "SELECT * FROM categories WHERE title LIKE :search";
+        $cats = Category::findBySql($query, [':search'=> '%T%'])->all();
+        //findOne(условие) получить одну запись из бд
+        //findAll(условие) получить все записи из бд
 
         return $this->render('show', compact('cats'));
     }

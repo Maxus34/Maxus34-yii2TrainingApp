@@ -24,9 +24,25 @@ JS;
 <?php $this->endBlock(); ?>
 
 <h1>Show Action</h1>
-<?php
-debug($cats);
 
+<table class = 'table table-striped table-hover'>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Parent</th>
+        <th>Alias</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($cats as $cat): ?>
+        <tr>
+            <td><?= $cat['title']  ?></td>
+            <td><?= $cat['parent'] ?></td>
+            <td><?= $cat['alias']  ?></td>
+        </tr>
+    <?php endforeach;?>
+    </tbody>
+</table>
 
 
 
