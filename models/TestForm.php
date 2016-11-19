@@ -7,13 +7,16 @@
  */
 
 namespace app\models;
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
-class TestForm extends Model {
-    //Поля формы
-    public $name;
-    public $email;
-    public $text;
+class TestForm extends ActiveRecord  {
+    //$name;
+    //$email;
+    //$text;
+
+    public static function tableName() {
+        return "posts";
+    }
 
     public function attributeLabels()
     {   //Подпись для поля
@@ -28,20 +31,12 @@ class TestForm extends Model {
     {   //Варидаторы
         //Поле без валидатора по умолчанию является не безопасным
         // и не будет загружено в модель.
+        // "Safe" делает поле безопасным
         return [
-            [ ['name', 'email'], 'required'],
-            ['email', 'email'],
-//            ['name', 'string', 'min' => 2, 'tooShort' => 'Too short input'],
-//            ['name', 'string', 'max' => 5, 'tooLong' => 'Too long input'], // То же что и ↓
+            [ ['name', 'text'], 'required'],
+           // ['email', 'email'],
             ['name', 'string', 'length' => [2,15], 'tooShort' => 'Short input', 'tooLong' => 'Long input'],
-            ['text', 'safe'], // "Safe" делает поле безопасным.
-            //['name', 'myRule']
         ];
     }
 
-    public function myRule($attr) { // Специальная функция валидации
-        if (!in_array($this->$attr, ['Hello ' , 'World'])) {
-            $this->addError($attr, 'Wrong input: '. $this->$attr);
-        }
-    }
 }
