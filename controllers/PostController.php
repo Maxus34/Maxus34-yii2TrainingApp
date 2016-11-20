@@ -27,6 +27,8 @@ class PostController extends AppController
 
     public function actionIndex () {
 
+        // При получении модели через new при сохранении будет
+        //
         $model = new TestForm();
 
         // Данные успешно загружены методом POST
@@ -47,7 +49,7 @@ class PostController extends AppController
         $this->view->title="Post=>Show";
         /*
         //Получаем информацию из модели
-        // -> find() - обязательный, строит обьект запроса
+        // :: find() - обязательный, строит обьект запроса
         // -> all() - получить все
         // -> one() - получить одну первую | Запрос избыточный, сначала получит все записи, но вернет всего одну
         // -> count() - подсчитывает количество записей
@@ -67,8 +69,8 @@ class PostController extends AppController
         */
         //Жадная загрузка
         //->with('products') позволяет получить сразу продукты вместе с категориями.
-        $cats = Category::find()->with('products')->all();
+        //$cats = Category::find()->with('products')->all();
 
-        return $this->render('show', compact('cats'));
+        return $this->render('show');
     }
 }

@@ -25,7 +25,7 @@
 <?=   $form->field( $model, 'name' )->label('Имя')   ?>
 <?=   $form->field( $model, 'email' )->input('email')?>
 <?=   $form->field( $model, 'text' )->label('Текст сообщения')->textarea(['rows' => '5']) ?>
-<?=   Html::submitButton( 'Отправить', ['class' => 'btn btn-success']) ?>
+<?=   Html::submitButton( 'Отправить', ['class' => 'btn btn-success']) ?> &nbsp;&nbsp;&nbsp;&nbsp;
 <?=   Html::resetButton(  'Сброс',     ['class' => 'btn btn-danger'] ) ?>
 <?php ActiveForm::end() ?>
 

@@ -1,5 +1,6 @@
 <?php
-//$this = view;
+use app\components\MyWidget;
+
     $jsCode =
 <<< JS
         $('#btn_1').on('click', function () {
@@ -19,15 +20,15 @@ JS;
     $this->registerJs($jsCode, yii\web\View :: POS_READY);
 ?>
 
-<?php $this->beginBlock('block1'); ?>
-    <h1> Заголовок страницы </h1>
-<?php $this->endBlock(); ?>
-
 <h1>Show Action</h1>
 
+<?php //echo MyWidget::widget(['name' => '123']); ?>
+<?php MyWidget::begin()?>
+    <h1>hello, world</h1>
+<?php MyWidget::end()?>
 
 <?php
-
+/*
 echo '<ul>';
     foreach ($cats as $cat) {
         echo "<li>" . $cat->title . "</li>";
@@ -38,7 +39,8 @@ echo '<ul>';
         echo "</ul>";
     }
 echo '</ul>';
-
+*/
+?>
 
 
 

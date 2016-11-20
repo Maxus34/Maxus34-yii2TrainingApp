@@ -7,13 +7,13 @@
  */
 
 namespace app\models;
+use yii\base\Model;
 use yii\db\ActiveRecord;
 
 class TestForm extends ActiveRecord  {
     //$name;
     //$email;
     //$text;
-
     public static function tableName() {
         return "posts";
     }
@@ -34,7 +34,7 @@ class TestForm extends ActiveRecord  {
         // "Safe" делает поле безопасным
         return [
             [ ['name', 'text'], 'required'],
-           // ['email', 'email'],
+            ['email', 'email'],
             ['name', 'string', 'length' => [2,15], 'tooShort' => 'Short input', 'tooLong' => 'Long input'],
         ];
     }
