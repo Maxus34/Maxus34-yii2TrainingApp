@@ -40,12 +40,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        
+
         'urlManager' => [
-            'showScriptName' => false,
             'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            //'suffix' => '.html',
             'rules' => [
-                '<controller>/<action>' => '<controller>/<action>'
+                [
+                    'pattern' => '',
+                    'route' => 'site/index',
+                    'suffix' => ''
+                ],
+                '<action:(about|contact|login)>' => 'site/<action>',
             ]
         ],
     ],
@@ -62,6 +68,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['127.0.0.1', '192.168.33.*'],
     ];
 }
 
