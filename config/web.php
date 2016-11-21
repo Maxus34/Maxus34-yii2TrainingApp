@@ -9,6 +9,7 @@ $config = [
     'language' => 'ru',
     'components' => [
         'request' => [
+            'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'jXnaPG3SBtkM90QFFePu-z088uoAiClQ',
         ],
@@ -39,14 +40,14 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+        
         'urlManager' => [
-            'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enablePrettyUrl' => true,
             'rules' => [
-            ],
+                '<controller>/<action>' => '<controller>/<action>'
+            ]
         ],
-        */
     ],
     'params' => $params,
 ];
